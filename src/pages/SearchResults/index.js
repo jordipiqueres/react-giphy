@@ -2,10 +2,15 @@ import React, {useEffect, useState} from 'react'
 import Spinner from 'components/Spinner'
 import ListOfGifs from 'components/ListOfGifs'
 import getGifs from '../../services/getGifs'
+import { useGifs } from '../../hooks/useGifs' 
 
 export default function SearchResults ({ params }) {
   const { keyword } = params
   console.log(keyword)
+  
+  const {loading, gifs} = useGifs({ keyword })
+  console.log({loading, gifs})
+  /*
   const [loading, seLoading] = useState(false)
   const [gifs , setGifs] = useState([])
 
@@ -20,6 +25,8 @@ export default function SearchResults ({ params }) {
     })
     
   }, [keyword])
+
+  */
 
   return <>
     { loading ?
