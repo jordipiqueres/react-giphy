@@ -1,25 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Spinner from 'components/Spinner'
 import ListOfGifs from 'components/ListOfGifs'
-import {useGifs} from 'hooks/useGifs'
+import getGifs from '../../services/getGifs'
 
 export default function SearchResults ({ params }) {
   const { keyword } = params
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  console.log(keyword)
+  const [loading, seLoading] = useState(false)
+  const [gifs , setGifs] = useState([])
 
-  const handleNextPage = () => setPage(prevPage => prevPage + 1)
+  // hook que se ejecuta una vez al renderizar y según la dependencia (keyword)
+  useEffect(() => {
+    console.log('efecto ejecutado')
+    seLoading(true) // cargando
+    getGifs({ keyword: keyword })
+    .then(gifs => {
+      seLoading(false) // cargado
+      return setGifs(gifs)
+    })
+    
+  }, [keyword])
 
   return <>
-    {loading
-      ? <Spinner />
-      : <>
-        <h3 className="App-title">
-          {decodeURI(keyword)}
-        </h3>
-        <ListOfGifs gifs={gifs} />
-      </>
+    { loading ?
+      <Spinner></Spinner>
+      : <ListOfGifs gifs={gifs}></ListOfGifs>
     }
-    <br />
-    <button onClick={handleNextPage}>Get next page</button>
   </>
 }

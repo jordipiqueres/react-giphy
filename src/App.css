@@ -6,6 +6,7 @@
   margin: 10px auto;
   padding: 20px 0;
   width: 144px;
+  cursor: pointer;
 }
 
 .App-logo img {
@@ -18,7 +19,7 @@
 }
 
 .App-content {
-  background-color: #121212;
+  background-color: #b1b1b1;
   color: white;
   display: flex;
   flex-direction: column;
