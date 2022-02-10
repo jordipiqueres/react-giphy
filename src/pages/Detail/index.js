@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import StaticContext from "../../context/StaticContext";
 import GifsContext from "../../context/GifsContext";
 import Gif from "../../components/Gif";
+import useGlobalGifs from "../../hooks/useGlobalGifs";
 
 export default function Detail ({params}) {
   const staticConfig = useContext(StaticContext)
@@ -12,7 +13,7 @@ export default function Detail ({params}) {
   // buenas prácticas: intentar evitar y justo lo necesario
   // el estado no se està guardando y si refrescamos lo vamos a perder
   // con un fallback se podría salvar
-  const {gifs, setGifs} = useContext(GifsContext)
+  const gifs = useGlobalGifs()
   console.log(gifs)
   const gif = gifs.find((singleGif) => {
     return singleGif.id === params.id
