@@ -1,14 +1,16 @@
 import React, {useState} from "react"
 import { Link, useLocation } from "wouter"
+import { useGifs } from "../../hooks/useGifs"
+import ListOfGifs from "../../components/ListOfGifs"
 
 const POPUPLAR_GIFS = ["Matrix", "Barcelona", "Mapache", "Panda"]
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
-
   const [path, pushLocation] = useLocation()
+  const {loading, gifs} = useGifs()
 
-
+  // premisa: no llenar el render de funciones en línea
   const handleSubmit = evt => {
     // normalmente 
     evt.preventDefault() // para evitar el refresco de la página
@@ -27,6 +29,8 @@ export default function Home() {
       <input placeholder='Search a gif here...' onChange={handleChange} type="text" value={keyword}></input>
       <button>Buscar</button>
     </form>
+    <h3 className="App-title">Última búsqueda</h3>
+    <ListOfGifs gifs={gifs}></ListOfGifs>
     <h3 className="App-title">Los gifs más popuplares</h3>
     <ul>
       {POPUPLAR_GIFS.map((popuplarGif) => {

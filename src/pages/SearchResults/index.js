@@ -4,7 +4,7 @@ import ListOfGifs from 'components/ListOfGifs'
 import getGifs from '../../services/getGifs'
 import { useGifs } from '../../hooks/useGifs' 
 
-export default function SearchResults ({ params }) {
+function SearchResults ({ params }) {
   const { keyword } = params
   console.log(keyword)
   
@@ -35,3 +35,4 @@ export default function SearchResults ({ params }) {
     }
   </>
 }
+export default React.memo(SearchResults)
