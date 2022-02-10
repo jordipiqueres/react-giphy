@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import SearchResults from './pages/SearchResults';
 import StaticContext from './context/StaticContext';
 import { GifsContextProvider } from './context/GifsContext';
+import { ContadorContextProvider } from './context/ContadorContext';
 
 // el contexto tiene un consumidor y un proveedor
 
@@ -20,10 +21,12 @@ function App() {
             <img className='App-logo' alt='Giffy logo' src='/logo.png'></img>
           </Link>
           <GifsContextProvider>
+            <ContadorContextProvider>
           <Route
             component={Home}
             path="/"
           ></Route>
+          </ContadorContextProvider>
             <Route
               component={SearchResults}
               path="/search/:keyword"

@@ -1,0 +1,9 @@
+.contador {
+  display: block;
+  width: 100%;
+  background-color: rgb(153, 197, 245);
+  min-height: 50px;
+}
+.contador small {
+  display: block;
+}

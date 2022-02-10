@@ -2,6 +2,9 @@ import React, {useState} from "react"
 import { Link, useLocation } from "wouter"
 import { useGifs } from "../../hooks/useGifs"
 import ListOfGifs from "../../components/ListOfGifs"
+import Contador from "../../components/Contador"
+import BotonContador1 from "../../components/BotonContador1"
+import BotonContador2 from "../../components/BotonContador2"
 
 const POPUPLAR_GIFS = ["Matrix", "Barcelona", "Mapache", "Panda"]
 
@@ -25,6 +28,9 @@ export default function Home() {
 
   return (
     <>
+    <Contador nombre={'test'} valor={'testvalor'}></Contador>
+    <BotonContador1></BotonContador1>
+    <BotonContador2></BotonContador2>
     <form onSubmit={handleSubmit}>
       <input placeholder='Search a gif here...' onChange={handleChange} type="text" value={keyword}></input>
       <button>Buscar</button>

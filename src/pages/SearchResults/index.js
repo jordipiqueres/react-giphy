@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import Spinner from 'components/Spinner'
-import ListOfGifs from 'components/ListOfGifs'
+import Spinner from '../../components/Spinner'
+import ListOfGifs from '../../components/ListOfGifs'
 import getGifs from '../../services/getGifs'
 import { useGifs } from '../../hooks/useGifs' 
 
